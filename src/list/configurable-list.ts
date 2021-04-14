@@ -5,14 +5,26 @@ import {
   customElement,
   TemplateResult
 } from "lit-element";
-import defaultListItem, { RowItem } from "./row/default";
-import oneColumn from "./row/one-column";
-import twoColumn from "./row/two-columns";
-import { listGroup } from "./styles/list";
+import defaultListItem, { RowItem } from "./list-item";
+import { listGroup, listItem } from "../styles/list";
+import { row, column } from "../styles/grid";
 
 const templates: { [k: string]: (item: RowItem) => TemplateResult } = {
-  "one-column": oneColumn,
-  "two-columns": twoColumn
+  "one-column": (item: RowItem) => {
+    return html`<li style=${listItem}>
+      <div style=${row}>
+        <div style=${column}>${item.firstName} ${item.lastName}</div>
+      </div>
+    </li>`;
+  },
+  "two-columns": (item: RowItem) => {
+    return html`<li style=${listItem}>
+      <div style=${row}>
+        <div style=${column}>${item.firstName}</div>
+        <div style=${column}>${item.lastName}</div>
+      </div>
+    </li>`;
+  }
 };
 
 @customElement("configurable-list")

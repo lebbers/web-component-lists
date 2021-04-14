@@ -1,13 +1,12 @@
 import { LitElement, html, property, customElement } from "lit-element";
 import { unsafeHTML } from "lit-html/directives/unsafe-html.js";
-import defaultListItem from "./row/default";
-import { listGroup, listItem } from "./styles/list";
+import defaultListItem from "./list-item";
+import { listGroup, listItem } from "../styles/list";
 
 const fillTemplate = function (
   templateString: string,
   templateVars: { [k: string]: string }
 ) {
-  console.log("TemplateVars", templateVars);
   return new Function("return `" + templateString + "`;").call(templateVars);
 };
 

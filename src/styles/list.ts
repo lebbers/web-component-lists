@@ -1,4 +1,4 @@
-import { styleMap } from "lit-html/directives/style-map.js";
+import { StyleInfo, styleMap } from "lit-html/directives/style-map.js";
 
 export const listGroup = styleMap({
   display: "flex",
@@ -16,3 +16,14 @@ export const listItem = styleMap({
   backgroundColor: "#fff",
   border: "1px solid rgba(0,0,0,.125)"
 });
+export const getListItem = (styles: StyleInfo) =>
+  styleMap({
+    position: "relative",
+    display: "block",
+    padding: ".5rem 1rem",
+    color: "#212529",
+    textDecoration: "none",
+    backgroundColor: "#fff",
+    border: "1px solid rgba(0,0,0,.125)",
+    ...styles
+  });

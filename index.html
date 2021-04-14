@@ -8,51 +8,50 @@
       crossorigin="anonymous"
     />
 
-    <!-- <script src="/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
-  <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script> -->
-    <title>LitElement Example</title>
-    <script src="./src/lit-element/index.ts" type="module"></script>
+    <title>LitElement Lists</title>
+
+    <script src="./src/example-section.ts" type="module"></script>
+    <script src="./src/index.ts" type="module"></script>
   </head>
 
   <body class="container">
-    <h1>
-      <simple-greeting name="Web Component lists"></simple-greeting>
-    </h1>
-    <main>
-      <div class="d-grid gap-3">
-        <section>
-          <h2>Simple</h2>
-          <simple-list
-            src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D"
-          >
-          </simple-list>
-        </section>
-        <!--
-      <section>
-        <h2>Dynamic template (eval)</h2>
+    <main class="d-grid gap-3">
+      <example-section title="Simple list">
+        <simple-list
+          src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D"
+        >
+        </simple-list>
+      </example-section>
+
+      <example-section title="Dynamic template (eval)">
         <dynamic-list
-          src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D">
+          src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D"
+        >
           <template>
             <strong>${this.firstName}</strong>
             <i>${this.lastName}</i>
           </template>
         </dynamic-list>
-      </section>
+      </example-section>
 
-      <section>
-        <h2>Configurable template (one-column/two-columns)</h2>
+      <example-section
+        title="Configurable template (one-column/two-columns)"
+        source="./configurable-list.ts"
+      >
         <configurable-list
           src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D"
-          templateName="one-columns"></configurable-list>
+          templateName="one-columns"
+        ></configurable-list>
         <configurable-list
           src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D"
-          templateName="two-columns"></configurable-list>
-      </section>
+          templateName="two-columns"
+        ></configurable-list>
+      </example-section>
 
-      <section>
-        <h2>Slottable list with template</h2>
+      <example-section title="Slottable list with template">
         <slottable-list
-          src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D">
+          src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D"
+        >
           <template>
             <p>
               <slot name="lastName">NOT FOUND</slot>,
@@ -60,21 +59,27 @@
             </p>
           </template>
         </slottable-list>
-      </section>
+      </example-section>
 
-      <section>
-        <h2>Lazy list</h2>
+      <example-section title="Lazy list">
         <lazy-list
-          src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D">
-          <template>
-            <p>
-              <slot name="lastName">NOT FOUND</slot>,
-              <slot name="firstName">NOT FOUND</slot>
-            </p>
-          </template>
-          </slottable-list>
-      </section>
-      --></div>
+          src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D"
+        >
+        </lazy-list>
+      </example-section>
+
+      <example-section title="Mobx list">
+        <mobx-list
+          src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D"
+        >
+        </mobx-list>
+      </example-section>
     </main>
+    <footer class="mt-4 p-1 border-top">
+      <p>
+        Powered by
+        <a href="https://lit-element.polymer-project.org/">LitElement</a>
+      </p>
+    </footer>
   </body>
 </html>

@@ -1,19 +1,19 @@
 import { LitElement, html, property, customElement } from "lit-element";
 import { templateContent } from "lit-html/directives/template-content";
-import defaultListItem, { RowItem } from "./row/default";
-import { listGroup, listItem } from "./styles/list";
+import defaultListItem, { RowItem } from "./list-item";
+import { listGroup, listItem } from "../styles/list";
 import { until } from "lit-html/directives/until.js";
-import { timeout } from "./utils/timeout";
+import { timeout } from "../utils/timeout";
 
 function renderListItem(template: HTMLTemplateElement, item: RowItem) {
-  return html`<list-item .template=${template} data-id=${item.id}>
+  return html`<list-item-template .template=${template} data-id=${item.id}>
     ${Object.entries(item).map(
       ([key, value]) => html`<span slot=${key}>${value}</span>`
     )}
-  </list-item>`;
+  </list-item-template>`;
 }
 
-@customElement("list-item")
+@customElement("list-item-template")
 export class ListItem extends LitElement {
   @property({ type: String })
   "data-id": string | null = null;

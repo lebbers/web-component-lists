@@ -1,6 +1,6 @@
 import { LitElement, html, property, customElement } from "lit-element";
-import defaultListItem from "./row/default";
-import { listGroup } from "./styles/list";
+import listItem from "./list-item";
+import { listGroup } from "../styles/list";
 
 @customElement("simple-list")
 export class SimpleList extends LitElement {
@@ -22,13 +22,12 @@ export class SimpleList extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
-    console.log("first element", this.renderRoot.firstElementChild);
     this.data = await this.fetchData();
   }
 
   render() {
     return html`<ul style=${listGroup}>
-      ${this.data.map((item) => defaultListItem(item))}
+      ${this.data.map((item) => listItem(item))}
     </ul>`;
   }
 }
