@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
-    "module": "commonjs",
+    "module": "ES6",
     "target": "ES6",
     "jsx": "preserve",
     "esModuleInterop": true,
