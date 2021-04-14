@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "commonjs",
+    "target": "ES6",
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "lib": [
+      "es6",
+      "ES2020",
+      "dom"
+    ],
+    "rootDir": "src",
+    "moduleResolution": "node",
+    "experimentalDecorators": true
+  }
+}
