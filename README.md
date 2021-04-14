@@ -1,2 +1,2 @@
 # web-component-lists
-Created with CodeSandbox
+A collection of web-component lists
