@@ -1,8 +1,10 @@
 {
   "name": "web-component-template-list",
+  "description": "A collection of web-component lists",
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
+  "private": true,
   "scripts": {
     "start": "parcel index.html --open",
     "build": "parcel build index.html"
