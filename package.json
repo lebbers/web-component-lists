@@ -2,7 +2,7 @@
   "name": "@wcd/lebbers.web-component-lists",
   "description": "A collection of web-component lists",
   "version": "1.0.0",
-  "main": "www/index.html",
+  "main": "index.html",
   "private": true,
   "scripts": {
     "start": "parcel index.html --open",
