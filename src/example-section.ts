@@ -32,18 +32,20 @@ export class CodeBlock extends LitElement {
     if (!this.$code || !this.$output) {
       throw new Error("Unable to construct source code");
     }
-    console.log(this.$code[0]);
-    // const highlight = Prism.highlight(
-    //   Array.from(this.$code[0].childNodes).reduce((acc, node) => {
-    //     console.log(node.nodeValue);
-    //     return (acc += node.nodeValue.replace("  ", ""));
-    //   }, ""),
-    //   Prism.languages[this.language],
-    //   this.language
-    // );
+    const code = this.$code[0].nodeValue || "";
+    console.log(code);
+    const highlight = Prism.highlight(
+      // Array.from(this.$code[0].childNodes).reduce((acc, node) => {
+      //   console.log(node.nodeValue);
+      //   return (acc += node.nodeValue.replace("  ", ""));
+      // }, ""),
+      "  " + code.replaceAll("      ", "  "),
+      Prism.languages[this.language],
+      this.language
+    );
 
     // Set to our styled block
-    // this.$output.innerHTML = highlight;
+    this.$output.innerHTML = highlight;
   }
 
   render() {
