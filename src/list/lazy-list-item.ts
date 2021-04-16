@@ -11,3 +11,10 @@ export default function lazyListItem(item: RowItem, index: number) {
   }
   return defaultListItem(item);
 }
+
+// render web-component items
+// <my-list-item></my-list-item>
+
+// html`<ul>
+//   ${data.map(item => <my-list-item .item={item}></my-list-item>)}
+// </ul>`

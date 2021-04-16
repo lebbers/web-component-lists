@@ -32,14 +32,18 @@ export class CodeBlock extends LitElement {
     if (!this.$code || !this.$output) {
       throw new Error("Unable to construct source code");
     }
-    const highlight = Prism.highlight(
-      Array.from(this.$code).reduce((acc, node) => (acc += node.nodeValue), ""),
-      Prism.languages[this.language],
-      this.language
-    );
+    console.log(this.$code[0]);
+    // const highlight = Prism.highlight(
+    //   Array.from(this.$code[0].childNodes).reduce((acc, node) => {
+    //     console.log(node.nodeValue);
+    //     return (acc += node.nodeValue.replace("  ", ""));
+    //   }, ""),
+    //   Prism.languages[this.language],
+    //   this.language
+    // );
 
     // Set to our styled block
-    this.$output.innerHTML = highlight;
+    // this.$output.innerHTML = highlight;
   }
 
   render() {
@@ -64,13 +68,8 @@ export class ExampleSection extends LitElement {
   }
   @property({ type: String }) title = "";
   @property({ type: String }) source = "";
+  @property({ type: Boolean }) "show-source" = true;
 
-  @internalProperty()
-  private _showSource: boolean = false;
-
-  toggleSource() {
-    this._showSource = !this._showSource;
-  }
   get renderSource() {
     const snippet = this.renderRoot.host.outerHTML;
     const code = snippet.replaceAll("<!---->", "");
@@ -80,15 +79,9 @@ export class ExampleSection extends LitElement {
     return html`<section>
       <page-title>
         <h2>${this.title}</h2>
-        <styled-button
-          @click=${this.toggleSource}
-          style=${styleMap({ margin: ".5rem" })}
-        >
-          Source
-        </styled-button>
       </page-title>
       <slot></slot>
-      ${this._showSource ? this.renderSource : ""}
+      ${this["show-source"] ? this.renderSource : ""}
     </section>`;
   }
 }

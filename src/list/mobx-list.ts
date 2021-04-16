@@ -32,6 +32,12 @@ class ListItemModel implements RowItem {
     this.lastName = last;
   }
 
+  update(item: RowItem) {
+    this.id = item.id;
+    this.firstName = item.firstName;
+    this.lastName = item.lastName;
+  }
+
   select() {
     this.selected = !this.selected;
   }
@@ -50,14 +56,21 @@ class ListStore {
     try {
       this.state = "loading";
       const results = yield fetch(url).then((resp) => resp.json());
-      this.items.push(
-        ...results.map((item: ListItemModel) => new ListItemModel(item))
-      );
+      results.forEach(this.push.bind(this));
       this.state = "done";
       console.log("Loaded data", results);
     } catch (error) {
       this.state = "error";
       console.error(error);
+    }
+  }
+
+  push(item: ListItemModel) {
+    const found = this.items.find((i) => i.id === item.id);
+    if (found) {
+      found.update(item);
+    } else {
+      this.items.push(new ListItemModel(item));
     }
   }
 
@@ -67,6 +80,8 @@ class ListStore {
 }
 
 const store = new ListStore([]);
+//@ts-ignore
+window.store = store;
 
 @customElement("mobx-list")
 export class MobxList extends MobxReactionUpdate(LitElement) {

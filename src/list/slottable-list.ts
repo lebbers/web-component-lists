@@ -8,7 +8,8 @@ import { timeout } from "../utils/timeout";
 function renderListItem(template: HTMLTemplateElement, item: RowItem) {
   return html`<list-item-template .template=${template} data-id=${item.id}>
     ${Object.entries(item).map(
-      ([key, value]) => html`<span slot=${key}>${value}</span>`
+      ([key, value]) =>
+        html`<span slot=${key} class="list-item-text">${value}</span>`
     )}
   </list-item-template>`;
 }

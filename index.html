@@ -12,10 +12,43 @@
 
     <script src="./src/example-section.ts" type="module"></script>
     <script src="./src/index.ts" type="module"></script>
+
+    <script type="module" defer>
+      let counter = 1;
+      const buttonEl = document.getElementById("add-list-item");
+      buttonEl.addEventListener("click", () => {
+        const listEl = document.getElementsByTagName("web-component-list")[0];
+        const component = document.createElement("my-list-item");
+        component.textContent = new Intl.NumberFormat(navigator.language, {
+          style: "unit",
+          unit: "megabyte",
+          unitDisplay: "short"
+        }).format(Math.pow(2, ++counter));
+        listEl.appendChild(component);
+      });
+    </script>
+    <style type="text/css">
+      span[slot] {
+        color: navy;
+      }
+      .list-item-text {
+        text-transform: uppercase;
+      }
+    </style>
   </head>
 
   <body class="container">
     <main class="d-grid gap-3">
+      <example-section title="Web Component list">
+        <styled-button id="add-list-item">Add list item</styled-button>
+        <web-component-list
+          src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D"
+        >
+          <my-list-item value="0">0 MB</my-list-item>
+          <my-list-item value="1">1 MB</my-list-item>
+          <my-list-item value="2">2 MB</my-list-item>
+        </web-component-list>
+      </example-section>
       <example-section title="Simple list">
         <simple-list
           src="data:application/json,%5B%7B%22id%22%3A%221%22%2C%22firstName%22%3A%22John%22%2C%22lastName%22%3A%22Doe%22%7D%2C%7B%22id%22%3A%222%22%2C%22firstName%22%3A%22Mary%22%2C%22lastName%22%3A%22Peterson%22%7D%2C%7B%22id%22%3A%223%22%2C%22firstName%22%3A%22George%22%2C%22lastName%22%3A%22Hansen%22%7D%5D"

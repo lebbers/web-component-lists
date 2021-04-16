@@ -7,6 +7,7 @@ import "./list/configurable-list";
 import "./list/slottable-list";
 import "./list/lazy-list";
 import "./list/mobx-list";
+import "./list/web-component-list";
 
 import "./page-title/define";
 import "./styled-button/define";
